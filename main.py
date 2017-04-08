@@ -18,10 +18,16 @@ import webapp2
 import cgi
 import jinja2
 import os
+from google.appengine.ext import db
 
 # set up jinja
 template_dir = os.path.join(os.path.dirname(__file__), "templates")
-jinja_env = jinja2.Environment(loader = jinja2.FileSystemLoader(template_dir))
+jinja_env = jinja2.Environment(loader = jinja2.FileSystemLoader(template_dir), autoescape = True)
+
+class Blog_DB(db.Model):
+    title = db.StringProperty(required = True)
+    content = db.TextProperty(required = True)
+    created = db.DateTimeProperty(auto_now_add = True)
 
 class MainHandler(webapp2.RequestHandler):
     def get(self):
@@ -35,21 +41,53 @@ class NewPost(webapp2.RequestHandler):
         content = t.render()
         self.response.write(content)
 
+    def post(self):
+        title = self.request.get('post-title')
+        content = self.request.get('post-content')
+        error_css, error_message, error_title, error_content = '', '', '', ''
+
+        if title and content:
+            post_entry = Blog_DB(title = title, content = content)
+            post_entry.put()
+            self.response.write('<a href="/blog/' + str(post_entry.key().id()) + '">You did it!</a>')
+        else:
+            error_css = 'error'
+            error_message = 'You need a title and content to make a new post.'
+            if not title:
+                error_title = 'error_box'
+            if not content:
+                error_content = 'error_box'
+            t = jinja_env.get_template("create-new-post.html")
+            content = t.render( title=title,
+                                content=content,
+                                errorTitle=error_title,
+                                errorContent=error_content,
+                                errorCss=error_css,
+                                errorMessage=error_message)
+            error_css, error_message, error_title, error_content = '', '', '', ''
+            self.response.write(content)
+
+
 class Blog(webapp2.RequestHandler):
     def get(self):
+        posts = db.GqlQuery(""" SELECT * FROM Blog_DB
+                                ORDER BY created DESC
+                                LIMIT 5""")
         t = jinja_env.get_template("blog.html")
-        content = t.render()
+        content = t.render(posts = posts)
         self.response.write(content)
 
 class ViewPost(webapp2.RequestHandler):
-    def get(self):
+    def get(self, id):
+        post = Blog_DB.get_by_id(int(id))
         t = jinja_env.get_template("post.html")
-        content = t.render()
+        content = t.render(post=post)
         self.response.write(content)
 
 app = webapp2.WSGIApplication([
     ('/', MainHandler),
     ('/newpost', NewPost),
     ('/blog', Blog),
-    ('/viewpost', ViewPost)
+    ('/blog/', Blog),
+    webapp2.Route('/blog/<id:\d+>', ViewPost)
 ], debug=True)

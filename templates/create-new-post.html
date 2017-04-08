@@ -4,8 +4,9 @@
 {% block content %}
 <h1>Create New Post</h1>
 <form action="/newpost" method="post">
-    <label id="postTitle"><span>Post Title</span><input type="text" name="post-title" /></label>
-    <label id="postContent"><span>Post Content</span><textarea name="post-content"></textarea>
+    <label id="postTitle" class="{{ errorTitle }}"><span>Post Title</span><input type="text" name="post-title" value="{{ title }}" /></label>
+    <label id="postContent" class="{{ errorContent }}"><span>Post Content</span><textarea name="post-content">{{ content }}</textarea></label>
+    <div class="{{ errorCss }}">{{ errorMessage }}</div>
     <input type="submit" />
 </form>
 
