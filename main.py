@@ -15,11 +15,41 @@
 # limitations under the License.
 #
 import webapp2
+import cgi
+import jinja2
+import os
+
+# set up jinja
+template_dir = os.path.join(os.path.dirname(__file__), "templates")
+jinja_env = jinja2.Environment(loader = jinja2.FileSystemLoader(template_dir))
 
 class MainHandler(webapp2.RequestHandler):
     def get(self):
-        self.response.write('Hello world!')
+        t = jinja_env.get_template("main-page.html")
+        content = t.render()
+        self.response.write(content)
+
+class NewPost(webapp2.RequestHandler):
+    def get(self):
+        t = jinja_env.get_template("create-new-post.html")
+        content = t.render()
+        self.response.write(content)
+
+class Blog(webapp2.RequestHandler):
+    def get(self):
+        t = jinja_env.get_template("blog.html")
+        content = t.render()
+        self.response.write(content)
+
+class ViewPost(webapp2.RequestHandler):
+    def get(self):
+        t = jinja_env.get_template("post.html")
+        content = t.render()
+        self.response.write(content)
 
 app = webapp2.WSGIApplication([
-    ('/', MainHandler)
+    ('/', MainHandler),
+    ('/newpost', NewPost),
+    ('/blog', Blog),
+    ('/viewpost', ViewPost)
 ], debug=True)
