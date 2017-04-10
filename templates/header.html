@@ -1,6 +1,9 @@
+{% if min_header %}
+{% set min_header = "min_header" %}
+{% endif %}
 
 {% block header %}
-<header>
+<header class="{{ min_header }}">
     <h1>Header</h1>
     <ul>
         <li><a href="/">Home</a></li>

@@ -25,15 +25,20 @@ template_dir = os.path.join(os.path.dirname(__file__), "templates")
 jinja_env = jinja2.Environment(loader = jinja2.FileSystemLoader(template_dir), autoescape = True)
 
 def get_posts(limit, offset):
-    posts = db.GqlQuery(  """SELECT * FROM Blog_DB
-                             ORDER BY created DESC
-                             LIMIT """ + str(limit) + " OFFSET " + str(offset))
+
+    query = """SELECT * FROM Blog_DB
+            ORDER BY created DESC
+            LIMIT {0} OFFSET {1}""".format(str(limit), str(offset))
+    posts = db.GqlQuery(query)
     return posts
 
 class Blog_DB(db.Model):
+
     title = db.StringProperty(required = True)
     content = db.TextProperty(required = True)
     created = db.DateTimeProperty(auto_now_add = True)
+    previous_post_id = db.StringProperty(required = False)
+    next_post_id = db.StringProperty(required = False)
 
 class MainHandler(webapp2.RequestHandler):
     def get(self):
@@ -50,13 +55,25 @@ class NewPost(webapp2.RequestHandler):
     def post(self):
         title = self.request.get('post-title')
         content = self.request.get('post-content')
+        content = content.replace("\r\n", "<br />")
         error_css, error_message, error_title, error_content = '', '', '', ''
-
+        next_post_id = ''
+        previous_post_id = ''
+        db_exists = None
+        if Blog_DB.all().count(limit=1):
+            previous_post_id = get_posts(1, 0)[0].key().id()
+            db_exists = True
         if title and content:
-            post_entry = Blog_DB(title = title, content = content)
+            post_entry = Blog_DB(title = title, content = content, previous_post_id = str(previous_post_id))
             post_entry.put()
+            post_id_for_update = str(post_entry.key().id())
+            if db_exists:
+                update_next_post = Blog_DB.get_by_id(previous_post_id)
+                update_next_post.next_post_id = post_id_for_update
+                update_next_post.put()
+
+
             self.redirect('/blog/' + str(post_entry.key().id()))
-            #self.response.write('<a href="/blog/' + str(post_entry.key().id()) + '">You did it!</a>')
         else:
             error_css = 'error'
             error_message = 'You need a title and content to make a new post.'
@@ -87,7 +104,7 @@ class Blog(webapp2.RequestHandler):
         if page.isdigit():
             page = int(page)
             if page > 1:
-                previous_page = page - 1
+                next_page = page - 1
         else:
             page = 1
 
@@ -96,7 +113,7 @@ class Blog(webapp2.RequestHandler):
         count = get_posts(6, offset).count(limit=6, offset=offset)
 
         if count > result_count:
-            next_page = page + 1
+            previous_page = page + 1
 
 
         posts = get_posts(5, offset)

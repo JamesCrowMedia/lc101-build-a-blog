@@ -9,24 +9,27 @@
     {% for post in posts %}
 
     <article>
-    <a href="/blog/{{post.key().id()}}"><h3>{{ post.title }}</h3></a>
-    <p>
+        <div class="blogPostHeader">
+            <a href="/blog/{{post.key().id()}}"><h3>{{ post.title }}</h3></a>
+            <span>{{ post.created }}</span>
+        </div>
+    <pre>
         {{ post.content }}
-    </p>
+    </pre>
     </article>
 
     {% endfor %}
 
     <ul id="blogNav">
 
-        {% if previous_page %}
-        <li>
-            <span><a href="/blog/?page={{ previous_page }}">&larr; Previous</a></span>
-        </li>
-        {% endif %}
         {% if next_page %}
         <li>
-            <span><a href="/blog/?page={{ next_page }}">Next &rarr;</a></span>
+            <span><a href="/blog/?page={{ next_page }}">&larr; View Newer Posts</a></span>
+        </li>
+        {% endif %}
+        {% if previous_page %}
+        <li>
+            <span><a href="/blog/?page={{ previous_page }}">View Older Posts &rarr;</a></span>
         </li>
         {% endif %}
     </ul>

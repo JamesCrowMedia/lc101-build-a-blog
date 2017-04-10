@@ -2,8 +2,24 @@
 {% set min_header = True %}
 
 {% block content %}
-<h1>{{ post.title }}</h1>
+<div class="postHeader">
+    <h1>{{ post.title }}</h1>
+    <span>{{ post.created }}</span>
+</div>
 <p>
-    {{ post.content }}
+    {{ post.content | safe }}
 </p>
+<ul id="blogNav">
+
+    {% if post.next_post_id %}
+    <li>
+        <span><a href="/blog/{{ post.next_post_id }}">&larr; View Newer</a></span>
+    </li>
+    {% endif %}
+    {% if post.previous_post_id %}
+    <li>
+        <span><a href="/blog/{{ post.previous_post_id }}">View Older &rarr;</a></span>
+    </li>
+    {% endif %}
+</ul>
 {% endblock %}
