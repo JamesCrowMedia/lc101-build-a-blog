@@ -24,6 +24,12 @@ from google.appengine.ext import db
 template_dir = os.path.join(os.path.dirname(__file__), "templates")
 jinja_env = jinja2.Environment(loader = jinja2.FileSystemLoader(template_dir), autoescape = True)
 
+def get_posts(limit, offset):
+    posts = db.GqlQuery(  """SELECT * FROM Blog_DB
+                             ORDER BY created DESC
+                             LIMIT """ + str(limit) + " OFFSET " + str(offset))
+    return posts
+
 class Blog_DB(db.Model):
     title = db.StringProperty(required = True)
     content = db.TextProperty(required = True)
@@ -49,7 +55,8 @@ class NewPost(webapp2.RequestHandler):
         if title and content:
             post_entry = Blog_DB(title = title, content = content)
             post_entry.put()
-            self.response.write('<a href="/blog/' + str(post_entry.key().id()) + '">You did it!</a>')
+            self.redirect('/blog/' + str(post_entry.key().id()))
+            #self.response.write('<a href="/blog/' + str(post_entry.key().id()) + '">You did it!</a>')
         else:
             error_css = 'error'
             error_message = 'You need a title and content to make a new post.'
@@ -70,19 +77,42 @@ class NewPost(webapp2.RequestHandler):
 
 class Blog(webapp2.RequestHandler):
     def get(self):
-        posts = db.GqlQuery(""" SELECT * FROM Blog_DB
-                                ORDER BY created DESC
-                                LIMIT 5""")
+        page = self.request.get("page")
+        error = self.request.get("error")
+        offset = 0
+        result_count = 5
+        previous_page = ''
+        next_page = ''
+
+        if page.isdigit():
+            page = int(page)
+            if page > 1:
+                previous_page = page - 1
+        else:
+            page = 1
+
+        offset = (page - 1) * result_count
+
+        count = get_posts(6, offset).count(limit=6, offset=offset)
+
+        if count > result_count:
+            next_page = page + 1
+
+
+        posts = get_posts(5, offset)
         t = jinja_env.get_template("blog.html")
-        content = t.render(posts = posts)
+        content = t.render(posts = posts, error=error, page=page, previous_page=previous_page, next_page = next_page)
         self.response.write(content)
 
 class ViewPost(webapp2.RequestHandler):
     def get(self, id):
-        post = Blog_DB.get_by_id(int(id))
-        t = jinja_env.get_template("post.html")
-        content = t.render(post=post)
-        self.response.write(content)
+        if Blog_DB.get_by_id(int(id)):
+            post = Blog_DB.get_by_id(int(id))
+            t = jinja_env.get_template("post.html")
+            content = t.render(post=post)
+            self.response.write(content)
+        else:
+            self.redirect('/blog/?error=' + str(id))
 
 app = webapp2.WSGIApplication([
     ('/', MainHandler),

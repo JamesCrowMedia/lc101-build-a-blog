@@ -1,3 +1,5 @@
-header {
+header h1{
     color: grey;
+    background-color: red;
+    font-size: 10px;
 }

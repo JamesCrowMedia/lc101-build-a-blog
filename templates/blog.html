@@ -1,7 +1,11 @@
 {% extends "base.html" %}
 
 {% block content %}
-
+    {% if error %}
+    <div class="error">
+        <span>No such post with ID#{{ error }}</span>
+    </div>
+    {% endif %}
     {% for post in posts %}
 
     <article>
@@ -12,5 +16,19 @@
     </article>
 
     {% endfor %}
+
+    <ul id="blogNav">
+
+        {% if previous_page %}
+        <li>
+            <span><a href="/blog/?page={{ previous_page }}">&larr; Previous</a></span>
+        </li>
+        {% endif %}
+        {% if next_page %}
+        <li>
+            <span><a href="/blog/?page={{ next_page }}">Next &rarr;</a></span>
+        </li>
+        {% endif %}
+    </ul>
 
 {% endblock %}
