@@ -3,12 +3,17 @@
 {% endif %}
 
 {% block header %}
-<header class="{{ min_header }}">
-    <h1>Header</h1>
-    <ul>
-        <li><a href="/">Home</a></li>
-        <li><a href="/blog">Blog</a></li>
-        <li><a href="/newpost">Create New Post</a></li>
-    </ul>
+<header class="base {{ min_header }}">
+    <div id="headerWrapper">
+        <div id="pageLogotype">
+            <h1 id="pageTitle">Build A Blog</h1>
+            <h3 id="pageSubtitle">A LC101 Project</h3>
+        </div>
+        <ul id="pageNav">
+            <!--<li><a href="/">Home</a></li>-->
+            <li><a href="/blog">Blog</a></li>
+            <li><a href="/newpost">Create New Post</a></li>
+        </ul>
+    </div>
 </header>
 {% endblock %}

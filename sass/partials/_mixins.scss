@@ -1,0 +1,11 @@
+@mixin flex-layout($type){
+    display: flex;
+    flex-direction: $type;
+}
+
+@mixin page-width(){
+    width: 90%;
+    margin: auto;
+    max-width: 1000px;
+    min-width: 500px;
+}

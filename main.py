@@ -42,9 +42,10 @@ class Blog_DB(db.Model):
 
 class MainHandler(webapp2.RequestHandler):
     def get(self):
-        t = jinja_env.get_template("main-page.html")
+        """t = jinja_env.get_template("main-page.html")
         content = t.render()
-        self.response.write(content)
+        self.response.write(content)"""
+        self.redirect('/blog/')
 
 class NewPost(webapp2.RequestHandler):
     def get(self):

@@ -13,8 +13,10 @@
     </head>
     <body>
         {% include "header.html" %}
-        {% block content %}
-        {% endblock %}
+        <section id="pageContent">
+            {% block content %}
+            {% endblock %}
+        </section>
         {% include "footer.html" %}
     </body>
 </html>

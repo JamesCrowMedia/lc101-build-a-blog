@@ -2,13 +2,15 @@
 {% set min_header = True %}
 
 {% block content %}
-<div class="postHeader">
-    <h1>{{ post.title }}</h1>
-    <span>{{ post.created }}</span>
-</div>
-<p>
-    {{ post.content | safe }}
-</p>
+<article>
+    <div class="postHeader">
+        <div class="postTitle"><h2>{{ post.title }}</h2></div>
+        <span class="postDate">{{ post.created.strftime('Created at %H:%M on %m/%d/%Y') }}</span>
+    </div>
+    <p class="postContent">
+        {{ post.content | safe }}
+    </p>
+</article>
 <ul id="blogNav">
 
     {% if post.next_post_id %}

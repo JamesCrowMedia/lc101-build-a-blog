@@ -1,3 +1,5 @@
+/* ----- Colors ----- */
+/* ----- Code ----- */
 /*! normalize.css v6.0.0 | MIT License | github.com/necolas/normalize.css */
 /* Document
    ========================================================================== */
@@ -451,14 +453,207 @@ template {
   display: none;
 }
 
-/* line 1, ../sass/partials/_base.scss */
-#postTitle, #postContent, label span {
-  display: block;
+/* line 1, ../sass/partials/_layout.scss */
+html {
+  min-width: 100%;
+  max-width: 100%;
 }
 
-/* line 5, ../sass/partials/_base.scss */
-.min_header h1 {
-  color: grey;
-  background-color: red;
-  font-size: 20px;
+/* line 6, ../sass/partials/_layout.scss */
+body {
+  display: flex;
+  flex-direction: column;
+  background-color: #F0EFEF;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+/*----- Header Content -----*/
+/* line 15, ../sass/partials/_layout.scss */
+header {
+  width: 100%;
+  background-color: #fff;
+  margin-bottom: 30px;
+}
+
+/* line 21, ../sass/partials/_layout.scss */
+#headerWrapper {
+  display: flex;
+  flex-direction: row;
+  width: 90%;
+  margin: auto;
+  max-width: 1000px;
+  min-width: 500px;
+  height: 200px;
+  align-items: flex-end;
+  flex-grow: 1;
+}
+
+/* line 29, ../sass/partials/_layout.scss */
+#pageLogotype {
+  min-width: 300px;
+  flex-grow: 1;
+}
+
+/* line 34, ../sass/partials/_layout.scss */
+#pageNav {
+  display: block;
+  width: 30%;
+  min-width: 150px;
+  max-width: 350px;
+  margin: auto 0 20px auto;
+  padding: 0;
+  text-align: right;
+  text-decoration: none;
+}
+/* line 43, ../sass/partials/_layout.scss */
+#pageNav li {
+  text-decoration: none;
+  display: inline;
+}
+/* line 46, ../sass/partials/_layout.scss */
+#pageNav li a {
+  padding: 10px 18px;
+  margin: 2px;
+  text-decoration: none;
+  color: #000;
+  background-color: #EDEDED;
+}
+/* line 52, ../sass/partials/_layout.scss */
+#pageNav li a:hover {
+  color: #fff;
+  background-color: #8B8B8B;
+}
+
+/*----- Footer Content -----*/
+/*----- Main Content -----*/
+/*---   Generic   ---*/
+/* line 66, ../sass/partials/_layout.scss */
+#pageContent {
+  width: 90%;
+  margin: auto;
+  max-width: 1000px;
+  min-width: 500px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+/* line 72, ../sass/partials/_layout.scss */
+.postTitle {
+  height: 100%;
+  margin: 20px 0px 0px 0px;
+  flex-grow: 1;
+}
+/* line 76, ../sass/partials/_layout.scss */
+.postTitle h3, .postTitle h2 {
+  margin: auto 0px 5px 20px;
+}
+
+/* line 81, ../sass/partials/_layout.scss */
+.postDate {
+  width: 30%;
+  min-width: 150px;
+  max-width: 350px;
+  margin: auto 20px 5px 20px;
+  text-align: right;
+}
+
+/* line 89, ../sass/partials/_layout.scss */
+.postContent {
+  border-top: 4px solid black;
+  overflow: auto;
+  margin: 0px;
+  padding: 30px 20px 20px 20px;
+  background-color: #fff;
+}
+
+/*---   Single Post Display Page   ---*/
+/* line 99, ../sass/partials/_layout.scss */
+.postHeader, .blogPostHeader {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  flex-grow: 1;
+}
+
+/*---   Blog Display Page   ---*/
+/* line 107, ../sass/partials/_layout.scss */
+.blogPageBlock {
+  margin-bottom: 30px;
+}
+
+/* line 111, ../sass/partials/_layout.scss */
+.blogPostHeader {
+  justify-content: space-between;
+}
+
+/* line 116, ../sass/partials/_layout.scss */
+.blogPageContinue {
+  display: inline;
+  float: right;
+  margin-right: 10px;
+  padding-bottom: 10px;
+}
+
+/*#postTitle, #postContent, label span {
+    display: block;
+}
+
+
+
+header ul li {
+    display: inline;
+    text-decoration: none;
+}
+
+header ul li a {
+    text-decoration: none;
+}
+
+
+
+.min_header h1{
+    color: grey;
+    background-color: blue;
+    font-size: 20px;
+} */
+/*---   Blog Display Page   ---*/
+/* line 4, ../sass/partials/_type.scss */
+h1 {
+  font-size: 55px;
+  margin: auto 0px 0px 20px;
+}
+
+/* line 9, ../sass/partials/_type.scss */
+h3 {
+  font-size: 15px;
+  margin: -10px 0px 20px 55px;
+  letter-spacing: .5em;
+}
+
+/* line 15, ../sass/partials/_type.scss */
+.blogPageContinue {
+  font-size: 30px;
+  text-decoration: none;
+  color: #E4E4E4;
+}
+/* line 19, ../sass/partials/_type.scss */
+.blogPageContinue:hover {
+  color: #AFADAD;
+}
+
+/* line 25, ../sass/partials/_type.scss */
+a {
+  text-decoration: none;
+}
+/* line 27, ../sass/partials/_type.scss */
+a h2 {
+  color: #000;
+  font-size: 36px;
+}
+/* line 30, ../sass/partials/_type.scss */
+a h2:hover {
+  color: #636363;
 }

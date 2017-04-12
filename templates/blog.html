@@ -8,14 +8,14 @@
     {% endif %}
     {% for post in posts %}
 
-    <article>
+    <article class="blogPageBlock">
         <div class="blogPostHeader">
-            <a href="/blog/{{post.key().id()}}"><h3>{{ post.title }}</h3></a>
-            <span>{{ post.created }}</span>
+            <a href="/blog/{{post.key().id()}}" class="postTitle"><h2>{{ post.title }}</h2></a>
+            <span class="postDate">{{ post.created.strftime('Created at %I:%M%p on %m/%d/%Y') }}</span>
         </div>
-    <pre>
-        {{ post.content }}
-    </pre>
+    <p class="postContent">
+        {{ post.content | truncate(500) | safe }}<a href="/blog/{{post.key().id()}}" class="blogPageContinue"> Continue &rarr;</a>
+    </p>
     </article>
 
     {% endfor %}

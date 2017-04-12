@@ -1,0 +1,34 @@
+
+/*---   Blog Display Page   ---*/
+
+h1 {
+    font-size: 55px;
+    margin: auto 0px 0px 20px;
+}
+
+h3 {
+    font-size: 15px;
+    margin: -10px 0px 20px 55px;
+    letter-spacing: .5em;
+}
+
+.blogPageContinue {
+    font-size: 30px;
+    text-decoration: none;
+    color: #E4E4E4;
+    &:hover {
+        color: #AFADAD;
+
+    }
+}
+
+a {
+    text-decoration: none;
+    h2 {
+    color: $primary_text;
+    font-size: 36px;
+    &:hover {
+        color: $secondary_text;
+        }
+    }
+}
