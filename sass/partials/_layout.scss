@@ -169,6 +169,8 @@ footer span {
     background-color: #fff;
 }
 
+
+
 #blogNav {
     width: 100%;
     max-height: 78px;
@@ -201,6 +203,18 @@ footer span {
     flex-grow: 1;
 }
 
+@media only screen and (max-width: 680px) {
+    .postHeader {
+        @include flex-layout(column);
+        justify-content: space-between;
+        flex-grow: 1;
+    }
+    .postDate {
+        width: 100%;
+        margin: 5px 20px 5px 20px;
+        text-align: left;
+    }
+}
 .single_post {
     flex-grow: 1;
     flex-basis: 100%;
@@ -267,6 +281,13 @@ footer span {
     flex-grow: 1;
 }
 
+@media only screen and (max-width: 680px) {
+    .blogPostHeader {
+        @include flex-layout(column);
+        justify-content: space-between;
+        flex-grow: 1;
+    }
+}
 .blogPageBlock:first-child {
         flex-basis: 100%;
     }

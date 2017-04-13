@@ -96,6 +96,38 @@ h3 {
     }
 }
 
+@media only screen and (max-width: 680px) {
+    .blogPageBlock {
+        h2 {
+            font-size: 20px;
+        }
+        &:first-child {
+            h2 {
+                font-size: 20px;
+            }
+        }
+    }
+    p {
+        font-size: 14px;
+    }
+}
+
+@media only screen and (max-width: 325px) {
+    .blogPageBlock {
+        h2 {
+            font-size: 14px;
+        }
+        &:first-child {
+            h2 {
+                font-size: 14px;
+            }
+        }
+    }
+    p {
+        font-size: 12px;
+    }
+}
+
 .single_post h2 {
     font-size: 40px;
 }
