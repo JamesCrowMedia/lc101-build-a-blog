@@ -1,4 +1,5 @@
 /* ----- Colors ----- */
+/* ----- Fonts -----*/
 /* ----- Code ----- */
 /*! normalize.css v6.0.0 | MIT License | github.com/necolas/normalize.css */
 /* Document
@@ -457,203 +458,494 @@ template {
 html {
   min-width: 100%;
   max-width: 100%;
+  min-height: 100%;
+  display: flex;
 }
 
-/* line 6, ../sass/partials/_layout.scss */
+/* line 8, ../sass/partials/_layout.scss */
 body {
   display: flex;
   flex-direction: column;
+  align-items: flex-end;
   background-color: #F0EFEF;
+  flex-grow: 1;
   width: 100%;
   padding: 0;
   margin: 0;
 }
 
 /*----- Header Content -----*/
-/* line 15, ../sass/partials/_layout.scss */
+/* line 19, ../sass/partials/_layout.scss */
 header {
   width: 100%;
   background-color: #fff;
   margin-bottom: 30px;
 }
 
-/* line 21, ../sass/partials/_layout.scss */
+/* line 25, ../sass/partials/_layout.scss */
 #headerWrapper {
   display: flex;
   flex-direction: row;
   width: 90%;
   margin: auto;
-  max-width: 1000px;
-  min-width: 500px;
+  max-width: 1024px;
+  min-width: 315px;
   height: 200px;
   align-items: flex-end;
-  flex-grow: 1;
 }
 
-/* line 29, ../sass/partials/_layout.scss */
+/* line 33, ../sass/partials/_layout.scss */
 #pageLogotype {
-  min-width: 300px;
+  min-width: 350px;
   flex-grow: 1;
 }
 
-/* line 34, ../sass/partials/_layout.scss */
+/* line 39, ../sass/partials/_layout.scss */
+#pageTitle {
+  margin: auto 0px 0px 20px;
+}
+
+/* line 43, ../sass/partials/_layout.scss */
+#pageSubtitle {
+  margin: -5px 0px 20px 45px;
+}
+
+/* line 47, ../sass/partials/_layout.scss */
 #pageNav {
   display: block;
   width: 30%;
-  min-width: 150px;
+  min-width: 265px;
   max-width: 350px;
-  margin: auto 0 20px auto;
+  margin: auto 20px 20px auto;
   padding: 0;
   text-align: right;
-  text-decoration: none;
 }
-/* line 43, ../sass/partials/_layout.scss */
+/* line 55, ../sass/partials/_layout.scss */
 #pageNav li {
-  text-decoration: none;
   display: inline;
 }
-/* line 46, ../sass/partials/_layout.scss */
+/* line 57, ../sass/partials/_layout.scss */
 #pageNav li a {
+  display: inline-block;
+  height: 100%;
   padding: 10px 18px;
   margin: 2px;
-  text-decoration: none;
-  color: #000;
-  background-color: #EDEDED;
-}
-/* line 52, ../sass/partials/_layout.scss */
-#pageNav li a:hover {
-  color: #fff;
-  background-color: #8B8B8B;
 }
 
+@media only screen and (max-width: 680px) {
+  /* line 67, ../sass/partials/_layout.scss */
+  #headerWrapper {
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  /* line 72, ../sass/partials/_layout.scss */
+  #pageLogotype {
+    margin-top: 50px;
+    width: 100%;
+    text-align: center;
+  }
+
+  /* line 78, ../sass/partials/_layout.scss */
+  #pageSubtitle {
+    margin: -5px 0px 20px 20px;
+  }
+
+  /* line 81, ../sass/partials/_layout.scss */
+  #pageNav {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin: 20px;
+    justify-content: space-between;
+    align-items: stretch;
+  }
+
+  /* line 88, ../sass/partials/_layout.scss */
+  #pageNav li {
+    max-width: none;
+    text-align: center;
+    width: 100%;
+    align-self: center;
+    flex-grow: 1;
+  }
+  /* line 94, ../sass/partials/_layout.scss */
+  #pageNav li a {
+    display: block;
+    padding: 0 auto 0 auto;
+  }
+}
+@media only screen and (max-width: 360px) {
+  /* line 102, ../sass/partials/_layout.scss */
+  #headerWrapper {
+    margin: 0px;
+    width: 100%;
+  }
+
+  /* line 106, ../sass/partials/_layout.scss */
+  #pageLogotype {
+    max-width: 315px;
+    min-width: 300px;
+    flex-grow: 1;
+  }
+
+  /* line 111, ../sass/partials/_layout.scss */
+  #pageTitle {
+    margin: auto 0px 0px 0px;
+  }
+
+  /* line 114, ../sass/partials/_layout.scss */
+  #pageSubtitle {
+    margin: 0px 0px 20px 0px;
+  }
+
+  /* line 117, ../sass/partials/_layout.scss */
+  #pageNav {
+    max-width: 90%;
+    margin: 0px;
+  }
+}
 /*----- Footer Content -----*/
-/*----- Main Content -----*/
-/*---   Generic   ---*/
-/* line 66, ../sass/partials/_layout.scss */
-#pageContent {
+/* line 124, ../sass/partials/_layout.scss */
+footer {
   width: 90%;
   margin: auto;
-  max-width: 1000px;
-  min-width: 500px;
+  max-width: 1024px;
+  min-width: 315px;
+  background-color: #000;
+  padding: 20px;
   display: flex;
-  flex-direction: column;
-  flex-grow: 1;
 }
 
-/* line 72, ../sass/partials/_layout.scss */
+/* line 130, ../sass/partials/_layout.scss */
+footer span {
+  display: block;
+  color: #E0DFDF;
+  padding: 0 20px;
+}
+
+/*----- Main Content -----*/
+/*---   Generic   ---*/
+/* line 138, ../sass/partials/_layout.scss */
+#pageContent {
+  flex-grow: 1;
+  width: 90%;
+  margin: auto;
+  max-width: 1024px;
+  min-width: 315px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+/* line 146, ../sass/partials/_layout.scss */
 .postTitle {
   height: 100%;
+  flex-basis: 60%;
   margin: 20px 0px 0px 0px;
-  flex-grow: 1;
+  flex-grow: 3;
 }
-/* line 76, ../sass/partials/_layout.scss */
+/* line 151, ../sass/partials/_layout.scss */
 .postTitle h3, .postTitle h2 {
+  display: inline;
   margin: auto 0px 5px 20px;
 }
 
-/* line 81, ../sass/partials/_layout.scss */
+/* line 157, ../sass/partials/_layout.scss */
 .postDate {
-  width: 30%;
   min-width: 150px;
   max-width: 350px;
   margin: auto 20px 5px 20px;
   text-align: right;
 }
 
-/* line 89, ../sass/partials/_layout.scss */
+/* line 164, ../sass/partials/_layout.scss */
 .postContent {
-  border-top: 4px solid black;
+  border-top: 2px solid #6A6A6A;
   overflow: auto;
   margin: 0px;
   padding: 30px 20px 20px 20px;
   background-color: #fff;
 }
 
-/*---   Single Post Display Page   ---*/
-/* line 99, ../sass/partials/_layout.scss */
-.postHeader, .blogPostHeader {
+/* line 172, ../sass/partials/_layout.scss */
+#blogNav {
+  width: 100%;
+  max-height: 78px;
   display: flex;
   flex-direction: row;
-  align-items: flex-end;
+  justify-content: space-between;
+  margin: 0;
+  padding: 0;
+}
+/* line 179, ../sass/partials/_layout.scss */
+#blogNav li {
+  flex-basis: 48%;
+  flex-grow: 1;
+  text-align: center;
+  margin: 20px;
+}
+/* line 184, ../sass/partials/_layout.scss */
+#blogNav li span {
+  display: flex;
+  height: 100%;
+  width: 100%;
+}
+/* line 188, ../sass/partials/_layout.scss */
+#blogNav li span a {
+  padding: 10px 10px;
   flex-grow: 1;
 }
 
-/*---   Blog Display Page   ---*/
-/* line 107, ../sass/partials/_layout.scss */
-.blogPageBlock {
-  margin-bottom: 30px;
+/*---   Single Post Display Page   ---*/
+/* line 198, ../sass/partials/_layout.scss */
+.postHeader, .blogPostHeader {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-grow: 1;
 }
 
-/* line 111, ../sass/partials/_layout.scss */
-.blogPostHeader {
+/* line 204, ../sass/partials/_layout.scss */
+.single_post {
+  flex-grow: 1;
+  flex-basis: 100%;
+  margin: 0 20px;
+}
+/* line 208, ../sass/partials/_layout.scss */
+.single_post .postContent {
+  flex-grow: 1;
+  flex-basis: 100%;
+  padding: 40px 40px;
+}
+
+/*---   Create New Post   ---*/
+/* line 215, ../sass/partials/_layout.scss */
+.createNewPost {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
   justify-content: space-between;
 }
 
-/* line 116, ../sass/partials/_layout.scss */
-.blogPageContinue {
-  display: inline;
-  float: right;
-  margin-right: 10px;
-  padding-bottom: 10px;
+/* line 221, ../sass/partials/_layout.scss */
+.createNewPost form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  justify-content: flex-start;
+  margin-bottom: 30px;
+}
+/* line 227, ../sass/partials/_layout.scss */
+.createNewPost form input {
+  padding: 10px;
 }
 
-/*#postTitle, #postContent, label span {
-    display: block;
+/* line 232, ../sass/partials/_layout.scss */
+.createNewPost form label {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+/* line 235, ../sass/partials/_layout.scss */
+.createNewPost form label span {
+  margin-top: 10px;
+}
+/* line 238, ../sass/partials/_layout.scss */
+.createNewPost form label input {
+  padding: 10px;
+  font-size: 20px;
+}
+/* line 242, ../sass/partials/_layout.scss */
+.createNewPost form label textarea {
+  width: 100%;
+  min-height: 400px;
+  flex-grow: 1;
+  padding: 10px;
+  font-size: 12px;
 }
 
-
-
-header ul li {
-    display: inline;
-    text-decoration: none;
-}
-
-header ul li a {
-    text-decoration: none;
-}
-
-
-
-.min_header h1{
-    color: grey;
-    background-color: blue;
-    font-size: 20px;
-} */
 /*---   Blog Display Page   ---*/
-/* line 4, ../sass/partials/_type.scss */
+/* line 253, ../sass/partials/_layout.scss */
+.blogPageBlock {
+  margin: 20px 20px 20px 20px;
+  display: flex;
+  flex-direction: column;
+  flex-basis: 45%;
+  flex-grow: 1;
+}
+/* line 258, ../sass/partials/_layout.scss */
+.blogPageBlock .postContent {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-bottom: 40px;
+}
+
+/* line 265, ../sass/partials/_layout.scss */
+.blogPostHeader {
+  flex-grow: 1;
+}
+
+/* line 270, ../sass/partials/_layout.scss */
+.blogPageBlock:first-child {
+  flex-basis: 100%;
+}
+
+/* line 275, ../sass/partials/_layout.scss */
+.blogPageContinue {
+  display: block;
+  margin: -40px 20px 0px auto;
+}
+
+/* line 1, ../sass/partials/_type.scss */
+body {
+  font-family: "Slabo 27px", serif;
+}
+
+/* line 6, ../sass/partials/_type.scss */
+h1, h2 {
+  font-family: "Lobster", cursive;
+}
+
+/* line 10, ../sass/partials/_type.scss */
+h3, .postDate {
+  font-family: "Josefin Slab", serif;
+}
+
+/* line 14, ../sass/partials/_type.scss */
+h1 {
+  color: #2D3354;
+}
+/* line 16, ../sass/partials/_type.scss */
+h1:hover {
+  color: #5D69AF;
+}
+
+/* line 21, ../sass/partials/_type.scss */
+p {
+  font-family: "Slabo 27px", serif;
+}
+
+/* line 25, ../sass/partials/_type.scss */
+#pageNav {
+  text-decoration: none;
+}
+/* line 27, ../sass/partials/_type.scss */
+#pageNav li {
+  text-decoration: none;
+  display: inline;
+}
+/* line 30, ../sass/partials/_type.scss */
+#pageNav li a {
+  text-decoration: none;
+  color: #2D3354;
+  background-color: #EDEDED;
+}
+/* line 34, ../sass/partials/_type.scss */
+#pageNav li a:hover {
+  color: #fff;
+  background-color: #5D69AF;
+}
+
+/* line 41, ../sass/partials/_type.scss */
+#blogNav {
+  text-decoration: none;
+}
+/* line 43, ../sass/partials/_type.scss */
+#blogNav li {
+  text-decoration: none;
+  display: inline;
+  background-color: #fff;
+}
+/* line 47, ../sass/partials/_type.scss */
+#blogNav li span a {
+  text-decoration: none;
+  color: #2D3354;
+}
+/* line 50, ../sass/partials/_type.scss */
+#blogNav li span a:hover {
+  color: #fff;
+}
+/* line 54, ../sass/partials/_type.scss */
+#blogNav li:hover {
+  color: #fff;
+  background-color: #5D69AF;
+}
+
+/*---   Blog Display Page   ---*/
+/* line 64, ../sass/partials/_type.scss */
 h1 {
   font-size: 55px;
-  margin: auto 0px 0px 20px;
 }
 
-/* line 9, ../sass/partials/_type.scss */
+/* line 68, ../sass/partials/_type.scss */
 h3 {
   font-size: 15px;
-  margin: -10px 0px 20px 55px;
   letter-spacing: .5em;
 }
 
-/* line 15, ../sass/partials/_type.scss */
+@media only screen and (max-width: 360px) {
+  /* line 74, ../sass/partials/_type.scss */
+  h1 {
+    font-size: 40px;
+  }
+
+  /* line 78, ../sass/partials/_type.scss */
+  h3 {
+    font-size: 12px;
+    letter-spacing: .2em;
+  }
+
+  /* line 82, ../sass/partials/_type.scss */
+  #pageNav li a {
+    font-size: 14px;
+  }
+}
+/* line 89, ../sass/partials/_type.scss */
+.blogPageBlock h2 {
+  font-size: 24px;
+}
+/* line 93, ../sass/partials/_type.scss */
+.blogPageBlock:first-child h2 {
+  font-size: 40px;
+}
+
+/* line 99, ../sass/partials/_type.scss */
+.single_post h2 {
+  font-size: 40px;
+}
+
+/* line 103, ../sass/partials/_type.scss */
 .blogPageContinue {
   font-size: 30px;
   text-decoration: none;
   color: #E4E4E4;
 }
-/* line 19, ../sass/partials/_type.scss */
+/* line 107, ../sass/partials/_type.scss */
 .blogPageContinue:hover {
-  color: #AFADAD;
+  color: #5D69AF;
 }
 
-/* line 25, ../sass/partials/_type.scss */
+/* line 113, ../sass/partials/_type.scss */
 a {
   text-decoration: none;
 }
-/* line 27, ../sass/partials/_type.scss */
+/* line 115, ../sass/partials/_type.scss */
 a h2 {
-  color: #000;
+  color: #282D49;
   font-size: 36px;
 }
-/* line 30, ../sass/partials/_type.scss */
+/* line 118, ../sass/partials/_type.scss */
 a h2:hover {
-  color: #636363;
+  color: #5D69AF;
+}
+
+/* line 124, ../sass/partials/_type.scss */
+.postDate {
+  font-size: 12px;
 }

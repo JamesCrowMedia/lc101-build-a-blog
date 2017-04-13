@@ -1,11 +1,15 @@
-html {
+ html {
     min-width: 100%;
     max-width: 100%;
+    min-height: 100%;
+    display: flex;
 }
 
 body {
     @include flex-layout(column);
+    align-items: flex-end;
     background-color: #F0EFEF;
+    flex-grow: 1;
     width: 100%;
     padding: 0;
     margin: 0;
@@ -23,63 +27,134 @@ header {
     @include page-width;
     height: 200px;
     align-items: flex-end;
-    flex-grow: 1;
+
 }
 
 #pageLogotype {
-    min-width: 300px;
+
+    min-width: 350px;
     flex-grow: 1;
+}
+
+#pageTitle {
+    margin: auto 0px 0px 20px;
+}
+
+#pageSubtitle {
+    margin: -5px 0px 20px 45px;
 }
 
 #pageNav {
     display: block;
     width: 30%;
-    min-width: 150px;
+    min-width: 265px;
     max-width: 350px;
-    margin: auto 0 20px auto;
+    margin: auto 20px 20px auto;
     padding: 0;
     text-align: right;
-    text-decoration: none;
         li {
-            text-decoration: none;
             display: inline;
             a {
+                display: inline-block;
+                height: 100%;
                 padding: 10px 18px;
                 margin: 2px;
-                text-decoration: none;
-                color: #000;
-                background-color: #EDEDED;
-                &:hover {
-                    color: #fff;
-                    background-color: #8B8B8B;
-                }
                 }
             }
         }
 
+@media only screen and (max-width: 680px) {
+    #headerWrapper {
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-end;
+    }
+    #pageLogotype {
+        margin-top: 50px;
+        width: 100%;
+        text-align: center;
+    }
 
+    #pageSubtitle {
+        margin: -5px 0px 20px 20px;
+    }
+    #pageNav {
+        @include flex-layout(row);
+        width: 100%;
+        margin: 20px;
+        justify-content: space-between;
+        align-items: stretch;
+    }
+    #pageNav li {
+        max-width: none;
+        text-align: center;
+        width: 100%;
+        align-self: center;
+        flex-grow: 1;
+        a {
+            display: block;
+            padding: 0 auto 0 auto;
+        }
+    }
+}
+
+@media only screen and (max-width: 360px) {
+    #headerWrapper {
+        margin: 0px;
+        width: 100%;
+    }
+    #pageLogotype {
+        max-width: 315px;
+        min-width: 300px;
+        flex-grow: 1;
+    }
+    #pageTitle {
+        margin: auto 0px 0px 0px;
+    }
+    #pageSubtitle {
+        margin: 0px 0px 20px 0px;
+    }
+    #pageNav {
+        max-width: 90%;
+        margin: 0px;
+    }
+}
 
 /*----- Footer Content -----*/
+footer {
+    @include page-width ;
+    background-color: #000;
+    padding: 20px;
+    display: flex;
+}
+footer span {
+    display: block;
+    color: #E0DFDF;
 
+    padding: 0 20px;
+}
 /*----- Main Content -----*/
 /*---   Generic   ---*/
 #pageContent {
-    @include page-width ;
-    @include flex-layout(column);
     flex-grow: 1;
+    @include page-width ;
+    @include flex-layout(row);
+    flex-wrap: wrap;
+    justify-content: space-between;
 }
 
 .postTitle {
     height: 100%;
+    flex-basis: 60%;
     margin: 20px 0px 0px 0px;
-    flex-grow: 1;
+    flex-grow: 3;
     h3, h2{
-   margin: auto 0px 5px 20px;
+        display: inline;
+        margin: auto 0px 5px 20px;
    }
 }
 
 .postDate {
-    width: 30%;
     min-width: 150px;
     max-width: 350px;
     margin: auto 20px 5px 20px;
@@ -87,35 +162,117 @@ header {
 }
 
 .postContent {
-    border-top: 4px solid black;
+    border-top: 2px solid #6A6A6A;
     overflow: auto;
     margin: 0px;
     padding: 30px 20px 20px 20px;
     background-color: #fff;
 }
 
+#blogNav {
+    width: 100%;
+    max-height: 78px;
+    @include flex-layout(row);
+    justify-content: space-between;
+    margin: 0;
+    padding: 0;
+        li {
+            flex-basis: 48%;
+            flex-grow: 1;
+            text-align: center;
+            margin: 20px;
+            span {
+                display: flex;
+                height: 100%;
+                width: 100%;
+                a {
+                    padding: 10px 10px;
+                    flex-grow: 1;
+                }
+            }
+        }
+    }
+
 /*---   Single Post Display Page   ---*/
 
 .postHeader {
     @include flex-layout(row);
-    align-items: flex-end;
+    justify-content: space-between;
     flex-grow: 1;
+}
+
+.single_post {
+    flex-grow: 1;
+    flex-basis: 100%;
+    margin: 0 20px;
+    .postContent {
+        flex-grow: 1;
+        flex-basis: 100%;
+        padding: 40px 40px;
+}}
+
+/*---   Create New Post   ---*/
+.createNewPost{
+    @include flex-layout(column);
+    width: 100%;
+    justify-content: space-between;
+}
+
+.createNewPost form {
+    width: 100%;
+    @include flex-layout(column);
+    flex-grow: 1;
+    justify-content: flex-start;
+    margin-bottom: 30px;
+    input {
+        padding: 10px;
+    }
+}
+
+.createNewPost form label {
+    @include flex-layout(column);
+    justify-content: space-between;
+    span {
+        margin-top: 10px;
+    }
+    input {
+        padding: 10px;
+        font-size: 20px;
+    }
+    textarea {
+        width: 100%;
+        min-height: 400px;
+        flex-grow: 1;
+        padding: 10px;
+        font-size: 12px;
+    }
 }
 
 /*---   Blog Display Page   ---*/
 
 .blogPageBlock {
-    margin-bottom: 30px;
+    margin: 20px 20px 20px 20px;
+    @include flex-layout(column);
+    flex-basis: 45%;
+    flex-grow: 1;
+     .postContent {
+         flex-grow: 1;
+         @include flex-layout(column);
+         justify-content: space-between;
+         padding-bottom: 40px;
+     }
 }
-
 .blogPostHeader {
     @extend .postHeader;
-    justify-content: space-between;
+    flex-grow: 1;
 }
 
+.blogPageBlock:first-child {
+        flex-basis: 100%;
+    }
+
+
 .blogPageContinue {
-    display: inline;
-    float:right;
-    margin-right: 10px;
-    padding-bottom: 10px;
+    display: block;
+    margin: -40px 20px 0px auto;
 }

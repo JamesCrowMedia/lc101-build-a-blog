@@ -1,15 +1,103 @@
+body {
+    font-family: $copy_font;
+
+}
+
+h1, h2 {
+    font-family: $display_font;
+}
+
+h3, .postDate {
+    font-family: $secondary_display_font;
+}
+
+h1 {
+    color: $link;
+    &:hover {
+        color: $link_hover;
+    }
+}
+
+p {
+    font-family: $copy_font;
+}
+
+#pageNav {
+    text-decoration: none;
+        li {
+            text-decoration: none;
+            display: inline;
+            a {
+                text-decoration: none;
+                color: $link;
+                background-color: #EDEDED;
+                &:hover {
+                    color: #fff;
+                    background-color: $link_hover;
+                }
+                }
+            }
+        }
+#blogNav {
+    text-decoration: none;
+        li {
+            text-decoration: none;
+            display: inline;
+            background-color: #fff;
+            span a {
+                text-decoration: none;
+                color: $link;
+                &:hover {
+                    color: #fff;
+                }
+                }
+            &:hover {
+                color: #fff;
+                background-color: $link_hover;
+            }
+            }
+        }
+
 
 /*---   Blog Display Page   ---*/
 
 h1 {
     font-size: 55px;
-    margin: auto 0px 0px 20px;
 }
 
 h3 {
     font-size: 15px;
-    margin: -10px 0px 20px 55px;
     letter-spacing: .5em;
+}
+
+@media only screen and (max-width: 360px) {
+    h1 {
+        font-size: 40px;
+    }
+
+    h3 {
+        font-size: 12px;
+        letter-spacing: .2em;
+    }
+    #pageNav li a {
+        font-size: 14px;
+    }
+
+}
+
+.blogPageBlock {
+    h2 {
+        font-size: 24px;
+    }
+    &:first-child {
+        h2 {
+            font-size: 40px;
+        }
+    }
+}
+
+.single_post h2 {
+    font-size: 40px;
 }
 
 .blogPageContinue {
@@ -17,7 +105,7 @@ h3 {
     text-decoration: none;
     color: #E4E4E4;
     &:hover {
-        color: #AFADAD;
+        color: $link_hover;
 
     }
 }
@@ -28,7 +116,11 @@ a {
     color: $primary_text;
     font-size: 36px;
     &:hover {
-        color: $secondary_text;
+        color: $link_hover;
         }
     }
+}
+
+.postDate {
+    font-size: 12px;
 }

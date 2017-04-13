@@ -14,8 +14,9 @@
             <span class="postDate">{{ post.created.strftime('Created at %I:%M%p on %m/%d/%Y') }}</span>
         </div>
     <p class="postContent">
-        {{ post.content | truncate(500) | safe }}<a href="/blog/{{post.key().id()}}" class="blogPageContinue"> Continue &rarr;</a>
+        {{ post.content | truncate(500) | safe }}
     </p>
+    <a href="/blog/{{post.key().id()}}" class="blogPageContinue"> Continue &rarr;</a>
     </article>
 
     {% endfor %}
