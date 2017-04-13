@@ -699,8 +699,25 @@ footer span {
   flex-grow: 1;
 }
 
+/* line 198, ../sass/partials/_layout.scss */
+.error {
+  flex: 0 1 100%;
+  display: flex;
+  max-height: 42px;
+}
+
+/* line 204, ../sass/partials/_layout.scss */
+.error_box {
+  width: 100%;
+  background-color: #FFAAAA;
+  color: white;
+  text-align: center;
+  padding: 15px;
+  margin: 0 20px;
+}
+
 /*---   Single Post Display Page   ---*/
-/* line 200, ../sass/partials/_layout.scss */
+/* line 215, ../sass/partials/_layout.scss */
 .postHeader, .blogPostHeader {
   display: flex;
   flex-direction: row;
@@ -709,7 +726,7 @@ footer span {
 }
 
 @media only screen and (max-width: 680px) {
-  /* line 207, ../sass/partials/_layout.scss */
+  /* line 222, ../sass/partials/_layout.scss */
   .postHeader, .blogPostHeader {
     display: flex;
     flex-direction: column;
@@ -717,20 +734,20 @@ footer span {
     flex-grow: 1;
   }
 
-  /* line 212, ../sass/partials/_layout.scss */
+  /* line 227, ../sass/partials/_layout.scss */
   .postDate {
     width: 100%;
     margin: 5px 20px 5px 20px;
     text-align: left;
   }
 }
-/* line 218, ../sass/partials/_layout.scss */
+/* line 233, ../sass/partials/_layout.scss */
 .single_post {
   flex-grow: 1;
   flex-basis: 100%;
   margin: 0 20px;
 }
-/* line 222, ../sass/partials/_layout.scss */
+/* line 237, ../sass/partials/_layout.scss */
 .single_post .postContent {
   flex-grow: 1;
   flex-basis: 100%;
@@ -738,7 +755,7 @@ footer span {
 }
 
 /*---   Create New Post   ---*/
-/* line 229, ../sass/partials/_layout.scss */
+/* line 244, ../sass/partials/_layout.scss */
 .createNewPost {
   display: flex;
   flex-direction: column;
@@ -746,46 +763,46 @@ footer span {
   justify-content: space-between;
 }
 
-/* line 235, ../sass/partials/_layout.scss */
+/* line 250, ../sass/partials/_layout.scss */
 .createNewPost form {
   width: 100%;
   display: flex;
   flex-direction: column;
-  flex-grow: 1;
+  flex-grow: 30;
   justify-content: flex-start;
   margin-bottom: 30px;
 }
-/* line 241, ../sass/partials/_layout.scss */
+/* line 256, ../sass/partials/_layout.scss */
 .createNewPost form input {
   padding: 10px;
 }
 
-/* line 246, ../sass/partials/_layout.scss */
+/* line 261, ../sass/partials/_layout.scss */
 .createNewPost form label {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
-/* line 249, ../sass/partials/_layout.scss */
+/* line 264, ../sass/partials/_layout.scss */
 .createNewPost form label span {
   margin-top: 10px;
 }
-/* line 252, ../sass/partials/_layout.scss */
+/* line 267, ../sass/partials/_layout.scss */
 .createNewPost form label input {
   padding: 10px;
   font-size: 20px;
 }
-/* line 256, ../sass/partials/_layout.scss */
+/* line 271, ../sass/partials/_layout.scss */
 .createNewPost form label textarea {
   width: 100%;
-  min-height: 400px;
+  min-height: 300px;
   flex-grow: 1;
   padding: 10px;
   font-size: 12px;
 }
 
 /*---   Blog Display Page   ---*/
-/* line 267, ../sass/partials/_layout.scss */
+/* line 282, ../sass/partials/_layout.scss */
 .blogPageBlock {
   margin: 20px 20px 20px 20px;
   display: flex;
@@ -793,7 +810,7 @@ footer span {
   flex-basis: 45%;
   flex-grow: 1;
 }
-/* line 272, ../sass/partials/_layout.scss */
+/* line 287, ../sass/partials/_layout.scss */
 .blogPageBlock .postContent {
   flex-grow: 1;
   display: flex;
@@ -802,13 +819,13 @@ footer span {
   padding-bottom: 40px;
 }
 
-/* line 279, ../sass/partials/_layout.scss */
+/* line 294, ../sass/partials/_layout.scss */
 .blogPostHeader {
   flex-grow: 1;
 }
 
 @media only screen and (max-width: 680px) {
-  /* line 285, ../sass/partials/_layout.scss */
+  /* line 300, ../sass/partials/_layout.scss */
   .blogPostHeader {
     display: flex;
     flex-direction: column;
@@ -816,12 +833,12 @@ footer span {
     flex-grow: 1;
   }
 }
-/* line 291, ../sass/partials/_layout.scss */
-.blogPageBlock:first-child {
-  flex-basis: 100%;
+/* line 306, ../sass/partials/_layout.scss */
+.blogPageBlock:nth-child(2) {
+  flex: 0 1 100%;
 }
 
-/* line 296, ../sass/partials/_layout.scss */
+/* line 312, ../sass/partials/_layout.scss */
 .blogPageContinue {
   display: block;
   margin: -40px 20px 0px auto;

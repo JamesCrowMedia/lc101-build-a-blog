@@ -1,11 +1,13 @@
 {% extends "base.html" %}
 
 {% block content %}
-    {% if error %}
+
     <div class="error">
-        <span>No such post with ID#{{ error }}</span>
+        {% if error %}
+        <span class="error_box">No such post.</span>
+        {% endif %}
     </div>
-    {% endif %}
+
     {% for post in posts %}
 
     <article class="blogPageBlock">

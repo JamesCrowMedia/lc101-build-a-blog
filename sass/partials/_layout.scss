@@ -195,6 +195,21 @@ footer span {
         }
     }
 
+.error {
+    flex: 0 1 100%;
+    display: flex;
+    max-height: 42px;
+}
+
+.error_box {
+    width: 100%;
+    background-color: #FFAAAA;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    margin: 0 20px;
+
+}
 /*---   Single Post Display Page   ---*/
 
 .postHeader {
@@ -235,7 +250,7 @@ footer span {
 .createNewPost form {
     width: 100%;
     @include flex-layout(column);
-    flex-grow: 1;
+    flex-grow: 30;
     justify-content: flex-start;
     margin-bottom: 30px;
     input {
@@ -255,7 +270,7 @@ footer span {
     }
     textarea {
         width: 100%;
-        min-height: 400px;
+        min-height: 300px;
         flex-grow: 1;
         padding: 10px;
         font-size: 12px;
@@ -288,8 +303,9 @@ footer span {
         flex-grow: 1;
     }
 }
-.blogPageBlock:first-child {
-        flex-basis: 100%;
+.blogPageBlock:nth-child(2) {
+        flex: 0 1 100%;
+
     }
 
 

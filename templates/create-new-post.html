@@ -3,12 +3,15 @@
 
 {% block content %}
 <section class="createNewPost">
+    <div class="error">
+    <span class="{{ errorCss }}">{{ errorMessage }}</span>
+    </div>
     <h2>Create New Post</h2>
     <form action="/newpost" method="post">
-        <label id="postTitle" class="{{ errorTitle }}"><span>Post Title</span><input type="text" name="post-title" value="{{ title }}" /></label>
-        <label id="postContent" class="{{ errorContent }}"><span>Post Content</span><textarea name="post-content">{{ content }}</textarea></label>
-        <div class="{{ errorCss }}">{{ errorMessage }}</div>
+        <label id="postTitle" class=""><span>Post Title</span><input type="text" name="post-title" value="{{ title }}" /></label>
+        <label id="postContent" class=""><span>Post Content</span><textarea name="post-content">{{ content }}</textarea></label>
         <input type="submit" />
     </form>
 </section>
 {% endblock %}
+q

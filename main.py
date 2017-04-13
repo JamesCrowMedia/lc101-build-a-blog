@@ -40,14 +40,25 @@ class Blog_DB(db.Model):
     previous_post_id = db.StringProperty(required = False)
     next_post_id = db.StringProperty(required = False)
 
-class MainHandler(webapp2.RequestHandler):
+class Handler(webapp2.RequestHandler):
+    """ A base RequestHandler class for our app.
+        The other handlers inherit form this one.
+    """
+
+    def renderError(self, error_code):
+        """ Sends an HTTP error code and a generic "oops!" message to the client. """
+
+        self.error(error_code)
+        self.response.write("Oops! Something went wrong.")
+
+class MainHandler(Handler):
     def get(self):
         """t = jinja_env.get_template("main-page.html")
         content = t.render()
         self.response.write(content)"""
         self.redirect('/blog/')
 
-class NewPost(webapp2.RequestHandler):
+class NewPost(Handler):
     def get(self):
         t = jinja_env.get_template("create-new-post.html")
         content = t.render()
@@ -76,7 +87,7 @@ class NewPost(webapp2.RequestHandler):
 
             self.redirect('/blog/' + str(post_entry.key().id()))
         else:
-            error_css = 'error'
+            error_css = 'error_box'
             error_message = 'You need a title and content to make a new post.'
             if not title:
                 error_title = 'error_box'
@@ -93,7 +104,7 @@ class NewPost(webapp2.RequestHandler):
             self.response.write(content)
 
 
-class Blog(webapp2.RequestHandler):
+class Blog(Handler):
     def get(self):
         page = self.request.get("page")
         error = self.request.get("error")
@@ -122,7 +133,7 @@ class Blog(webapp2.RequestHandler):
         content = t.render(posts = posts, error=error, page=page, previous_page=previous_page, next_page = next_page)
         self.response.write(content)
 
-class ViewPost(webapp2.RequestHandler):
+class ViewPost(Handler):
     def get(self, id):
         if Blog_DB.get_by_id(int(id)):
             post = Blog_DB.get_by_id(int(id))
